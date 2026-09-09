@@ -760,7 +760,7 @@ img{display:block}
       </h2>
       <ul class="stats-grid">
         <li class="reveal-item" data-reveal data-delay="0" style="transform:translateY(20px)"><div class="stat-number"><span data-count="5">0</span></div><div class="stat-label">Hackathon awards</div></li>
-        <li class="reveal-item" data-reveal data-delay="90" style="transform:translateY(20px)"><div class="stat-number"><span data-count="5">0</span></div><div class="stat-label">Certifications</div></li>
+        <li class="reveal-item" data-reveal data-delay="90" style="transform:translateY(20px)"><div class="stat-number"><span data-count="6">0</span></div><div class="stat-label">Certifications</div></li>
         <li class="reveal-item" data-reveal data-delay="180" style="transform:translateY(20px)"><div class="stat-number">8.03</div><div class="stat-label">Final Year CGPA</div></li>
         <li class="reveal-item" data-reveal data-delay="270" style="transform:translateY(20px)"><div class="stat-number"><span data-count="2">0</span>+</div><div class="stat-label">Projects shipped</div></li>
       </ul>
@@ -873,9 +873,9 @@ img{display:block}
         <h2>Let's build something together.</h2>
       </div>
       <form class="modal-form" id="requestForm" onsubmit="submitForm(event)">
-        <label><span class="field-label">Your Name</span><input type="text" required placeholder="Your name" /></label>
-        <label><span class="field-label">Email</span><input type="email" required placeholder="you@company.com" /></label>
-        <label><span class="field-label">Message</span><textarea rows="4" required placeholder="Tell me about the role or project…"></textarea></label>
+        <label><span class="field-label">Your Name</span><input type="text" name="name" required placeholder="Your name" /></label>
+        <label><span class="field-label">Email</span><input type="email" name="email" required placeholder="you@company.com" /></label>
+        <label><span class="field-label">Message</span><textarea rows="4" name="message" required placeholder="Tell me about the role or project…"></textarea></label>
         <div class="modal-bottom">
           <span class="modal-note">I reply within one business day.</span>
           <button class="pill-btn" type="submit"><span class="pill-inner pill-inner--dark pill-inner--arrow"><span id="submitLabel">Send</span><span class="pill-arrow-badge"><svg class="arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></button>
@@ -942,31 +942,36 @@ const AWARDS = [
 ];
 
 const CERTS = [
-  { id:'c1', title:'Data Structures and Algorithms', issuer:'GeeksforGeeks / NIT Trichy',
-    date:'March 2024', event:'Vertex 2 — National Level Symposium',
-    imageSrc:'', // ← ADD IMAGE PATH HERE  e.g. 'images/c1.jpg'
-    imageAlt:'DSA certificate NIT Trichy Vertex 2',
-    note:'Conducted by GeeksforGeeks as part of Vertex 2 National Level Symposium at NIT Trichy, 8th–10th March 2024.' },
-  { id:'c2', title:'Deep Learning with Quantum Computing', issuer:'MIT Anna University',
-    date:'March 2024', event:'SAMHITA — National Level Symposium',
-    imageSrc:'', // ← ADD IMAGE PATH HERE
-    imageAlt:'Deep Learning Quantum Computing certificate MIT Anna University',
-    note:'Awarded as part of SAMHITA, a National Level Symposium at MIT Anna University, 16th–17th March 2024.' },
+  { id:'c1', title:'Data Structures and Algorithms', issuer:'GeeksforGeeks × Boeing / NIT Trichy',
+    date:'March 2024', event:"Vortex '24 — National Level Technical Symposium",
+    imageSrc:'images/dsa-gfg-vortex24-cert.jpg',
+    imageAlt:"DSA certificate — GeeksforGeeks × Boeing, Vortex '24, NIT Tiruchirappalli",
+    note:"Completed the Data Structures & Algorithms workshop conducted by GeeksforGeeks as part of Vortex '24, the National Level Technical Symposium organised by the Computer Science & Engineering Association of NIT Tiruchirappalli, 8th–10th March 2024." },
+  { id:'c2', title:'Deep Learning with Quantum Computing', issuer:'Madras Institute of Technology, Anna University',
+    date:'March 2024', event:"SAMHITA '24 — National Level Technical Symposium",
+    imageSrc:'images/deeplearning-quantum-samhita24-cert.jpg',
+    imageAlt:"Deep Learning with Quantum Computing certificate — MIT Anna University, SAMHITA '24",
+    note:"Attended the workshop on Deep Learning with Quantum Computing (expert from Wells Fargo) as part of SAMHITA '24, a national level technical symposium organised by the Information Technology Association, Madras Institute of Technology, Anna University, Chennai, 16th–17th March 2024." },
   { id:'c3', title:'Programming in Java – Elite Certification', issuer:'IIT Kharagpur / NPTEL–SWAYAM',
-    date:'Jan – Apr 2025', event:'NPTEL Online Course',
-    imageSrc:'', // ← ADD IMAGE PATH HERE
-    imageAlt:'Java Elite certificate IIT Kharagpur NPTEL SWAYAM',
-    note:'Completed the 12-week NPTEL course (Jan–Apr 2025). Achieved Elite status with a 62% consolidated score.' },
-  { id:'c4', title:'Internet of Things (IoT)', issuer:'SRM IST',
-    date:'2024', event:'SRM ISTM 24',
-    imageSrc:'', // ← ADD IMAGE PATH HERE
-    imageAlt:'IoT certificate SRM IST',
-    note:'Covered fundamentals of IoT including sensors, embedded systems, device connectivity, and real-world IoT applications.' },
-  { id:'c5', title:'Front End Technologies Certification', issuer:'IBM & Tamil Nadu Skill Development Corporation',
+    date:'Jan – Apr 2025', event:'NPTEL Online Course — 12 Weeks (Skill India)',
+    imageSrc:'images/java-elite-nptel-iitkharagpur-cert.png',
+    imageAlt:'NPTEL Elite — Programming in Java certificate, IIT Kharagpur SWAYAM, Jan–Apr 2025',
+    note:'Awarded Elite status by IIT Kharagpur via NPTEL–SWAYAM (funded by MoE, Govt. of India) for successfully completing the 12-week Programming in Java course with a consolidated score of 62% (Online Assignments: 24.35/25 · Proctored Exam: 37.5/75). Roll No: NPTEL25CS57S1251000342. Credits recommended: 3 or 4.' },
+  { id:'c4', title:'Internet of Things (IoT)', issuer:'SRM Institute of Science and Technology, Vadapalani Campus',
+    date:'Feb – Mar 2024', event:'SRM IST Course — Dept. of ECE',
+    imageSrc:'images/iot-srm-vadapalani-cert.png',
+    imageAlt:'IoT Course Completion Certificate — SRM IST Vadapalani Campus, Chennai',
+    note:'Successfully completed the course on Internet of Things (IoT) offered by SRM Institute of Science and Technology, Vadapalani Campus, Chennai (Dept. of Electronics & Communication Engineering). Course duration: 26th February – 1st March 2024.' },
+  { id:'c5', title:'Front End Technologies', issuer:'IBM × Tamil Nadu Skill Development Corporation',
     date:'November 2025', event:'Naan Mudhalvan Scheme — Govt. of Tamil Nadu',
-    imageSrc:'', // ← ADD IMAGE PATH HERE
-    imageAlt:'Front End Technologies certificate IBM Tamil Nadu',
-    note:'Issued under the Naan Mudhalvan Scheme by the Government of Tamil Nadu in collaboration with IBM, November 2025.' },
+    imageSrc:'images/frontend-ibm-naanmudhalvan-cert.png',
+    imageAlt:'Front End Technologies Certificate of Achievement — IBM × Naan Mudhalvan, Tamil Nadu Skill Development Corporation, Nov 2025',
+    note:'Certificate of Achievement for the successful completion of Front End Technologies, sponsored by the Naan Mudhalvan Program, Tamil Nadu Skill Development Corporation and conducted by IBM. Date of Issue: 17/11/2025. Reg No: 911123104029. Cert No: NMO2526EAU35846639849.' },
+  { id:'c6', title:'Full Stack Development with Java', issuer:'Infosys Springboard × Tamil Nadu Skill Development Corporation',
+    date:'August 2026', event:'Naan Mudhalvan Scheme — Govt. of Tamil Nadu',
+    imageSrc:'images/fullstack-java-infosys-naanmudhalvan-cert.png',
+    imageAlt:'Full Stack Development with Java Certificate of Achievement — Infosys Springboard × Naan Mudhalvan, Tamil Nadu Skill Development Corporation, Aug 2026',
+    note:'Certificate of Achievement for the successful completion of Full Stack Development with Java, conducted by Infosys Springboard and sponsored by the Naan Mudhalvan Program, Tamil Nadu Skill Development Corporation. Date of Issue: 06/08/2026. Reg No: 911123104029. Cert No: NME2526EAU37436639849.' },
 ];
 
 /* ── LENIS ── */
@@ -1239,9 +1244,31 @@ window.closeModal=function(){
   setTimeout(()=>{modalFormState.style.display='';modalSuccessState.style.display='none';submitLabel.textContent='Send';requestForm.reset();},300);
 };
 function modalEsc(e){if(e.key==='Escape')closeModal();}
-window.submitForm=function(e){
-  e.preventDefault();submitLabel.textContent='Sending…';
-  setTimeout(()=>{modalFormState.style.display='none';modalSuccessState.style.display='block';},700);
+window.submitForm=async function(e){
+  e.preventDefault();
+  submitLabel.textContent='Sending…';
+  const form=e.target;
+  const data=new FormData(form);
+  try{
+    const res=await fetch('https://formspree.io/f/xdeopbll',{
+      method:'POST',
+      body:data,
+      headers:{'Accept':'application/json'}
+    });
+    if(res.ok){
+      modalFormState.style.display='none';
+      modalSuccessState.style.display='block';
+      form.reset();
+    } else {
+      const json=await res.json();
+      const msg=(json.errors||[]).map(e=>e.message).join(', ')||'Something went wrong. Please try again.';
+      alert(msg);
+      submitLabel.textContent='Send';
+    }
+  } catch(err){
+    alert('Network error — please check your connection and try again.');
+    submitLabel.textContent='Send';
+  }
 };
 
 /* ── LIQUID REVEAL ── */
