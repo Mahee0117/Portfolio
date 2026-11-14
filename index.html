@@ -315,6 +315,8 @@ img{display:block}
 .detail-bullets li{display:flex;gap:.875rem;font-size:.9375rem;line-height:1.7;color:rgba(17,17,17,.75)}
 .detail-bullets li::before{content:"";width:.4rem;height:.4rem;border-radius:9999px;background:#cf8047;flex-shrink:0;margin-top:.65rem}
 .detail-note{font-size:.9375rem;line-height:1.7;color:rgba(17,17,17,.7)}
+.detail-bullets a,.detail-note a{color:#cf8047;text-decoration:underline;text-underline-offset:3px;font-weight:600;transition:color .2s}
+.detail-bullets a:hover,.detail-note a:hover{color:#b15f2c}
 
 /* SERVICES */
 .services{background:#fff}
@@ -760,7 +762,7 @@ img{display:block}
       </h2>
       <ul class="stats-grid">
         <li class="reveal-item" data-reveal data-delay="0" style="transform:translateY(20px)"><div class="stat-number"><span data-count="5">0</span></div><div class="stat-label">Hackathon awards</div></li>
-        <li class="reveal-item" data-reveal data-delay="90" style="transform:translateY(20px)"><div class="stat-number"><span data-count="6">0</span></div><div class="stat-label">Certifications</div></li>
+        <li class="reveal-item" data-reveal data-delay="90" style="transform:translateY(20px)"><div class="stat-number"><span data-count="8">0</span></div><div class="stat-label">Certifications</div></li>
         <li class="reveal-item" data-reveal data-delay="180" style="transform:translateY(20px)"><div class="stat-number">8.03</div><div class="stat-label">Final Year CGPA</div></li>
         <li class="reveal-item" data-reveal data-delay="270" style="transform:translateY(20px)"><div class="stat-number"><span data-count="2">0</span>+</div><div class="stat-label">Projects shipped</div></li>
       </ul>
@@ -942,6 +944,24 @@ const AWARDS = [
 ];
 
 const CERTS = [
+  { id:'c7', title:'Introduction to LangChain - Python', issuer:'LangChain Academy',
+    date:'November 2026', event:'Official Certification · Cert ID: qhxu9i5wej',
+    imageSrc:'images/intro-langchain-python-cert.jpg',
+    imageAlt:'Introduction to LangChain Python Certificate of Completion — LangChain Academy',
+    note:'Completed the comprehensive LangChain Python curriculum covering foundational model orchestration, tool creation with the @tool decorator, short-term conversational memory, multimodal messaging, Model Context Protocol (MCP), and multi-agent systems with ReAct loops (Reason → Act → Observe). Studied production patterns including middleware, human-in-the-loop review checkpoints, and tracing/observability using LangSmith.',
+    bullets:['As a hands-on outcome of this course, designed and built <a href="https://github.com/Mahee0117/EventPlanner_Langchain" target="_blank" rel="noopener"><strong>Multi-Agent Event Planner</strong></a> — an end-to-end multi-agent wedding planning system.',
+             'Architected a Lead Agent that decomposes user wedding requirements and delegates sub-tasks to independent specialist agents using Tavily API for real-time web search (venues, caterers, photographers).',
+             'Engineered ReAct agent loops running 100% locally with Ollama (Qwen2:7B) with real-time token streaming to a clean Streamlit UI.',
+             '🔗 GitHub Project: <a href="https://github.com/Mahee0117/EventPlanner_Langchain" target="_blank" rel="noopener">Mahee0117/EventPlanner_Langchain ↗</a>'] },
+  { id:'c8', title:'Quickstart: LangChain Essentials - Python', issuer:'LangChain Academy',
+    date:'November 2026', event:'Official Certification · Cert ID: 97pxjlfw2w',
+    imageSrc:'images/quickstart-langchain-essentials-cert.jpg',
+    imageAlt:'Quickstart: LangChain Essentials Python Certificate of Completion — LangChain Academy',
+    note:"Mastered LangChain's core primitives centered around the modern create_agent abstraction. Covered foundational chat models, prompt engineering, token-by-token streaming, custom tool bindings, dynamic external tool integration via Model Context Protocol (MCP), short-term conversational memory, Pydantic structured output validation, dynamic prompt injection, and human-in-the-loop validation hooks.",
+    bullets:['Mastered core agent abstractions: create_agent, dynamic prompt templating, and message schemas (HumanMessage, AIMessage, SystemMessage).',
+             'Implemented tool-calling mechanisms and external data retrieval with Model Context Protocol (MCP) and custom Python tools.',
+             'Applied structured output enforcement using Pydantic schemas and token streaming for responsive conversational AI interfaces.',
+             'Directly utilized these foundational agent patterns to build the ReAct agent loops in the <a href="https://github.com/Mahee0117/EventPlanner_Langchain" target="_blank" rel="noopener"><strong>Multi-Agent Event Planner</strong></a> project.'] },
   { id:'c1', title:'Data Structures and Algorithms', issuer:'GeeksforGeeks × Boeing / NIT Trichy',
     date:'March 2024', event:"Vortex '24 — National Level Technical Symposium",
     imageSrc:'images/dsa-gfg-vortex24-cert.jpg',
@@ -1195,11 +1215,13 @@ function openDetail(item,isAward){
   if(item.event) pills.push(`<span class="detail-date-pill">${item.event}</span>`);
   pills.push(`<span class="detail-date-pill">${item.date}</span>`);
 
-  const descHtml=item.bullets
-    ?`<div class="detail-desc-title">What I built</div><ul class="detail-bullets">${item.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`
-    :item.note
-    ?`<div class="detail-desc-title">About this certification</div><p class="detail-note">${item.note}</p>`
-    :'';
+  let descHtml='';
+  if(item.note){
+    descHtml+=`<div class="detail-desc-title">${isAward?'Overview':'Curriculum & Learnings'}</div><p class="detail-note">${item.note}</p>`;
+  }
+  if(item.bullets && item.bullets.length){
+    descHtml+=`${item.note?'<div class="detail-divider"></div>':''}<div class="detail-desc-title">What I built / Key Highlights</div><ul class="detail-bullets">${item.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+  }
 
   detailBody.innerHTML=`${imgHtml}
     <div class="detail-category">${isAward?'Hackathon Award':'Certification'} · ${item.place||item.issuer}</div>
