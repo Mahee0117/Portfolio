@@ -281,7 +281,7 @@ img{display:block}
 .detail-panel.open{pointer-events:auto}
 .detail-backdrop{position:absolute;inset:0;background:rgba(17,17,17,.45);backdrop-filter:blur(8px);opacity:0;transition:opacity .4s}
 .detail-panel.open .detail-backdrop{opacity:1}
-.detail-drawer{position:absolute;right:0;top:0;bottom:0;width:100%;max-width:48rem;background:#fff;transform:translateX(100%);transition:transform .55s cubic-bezier(.22,1,.36,1);overflow-y:auto;display:flex;flex-direction:column}
+.detail-drawer{position:absolute;right:0;top:0;bottom:0;width:100%;max-width:48rem;background:#fff;transform:translateX(100%);transition:transform .55s cubic-bezier(.22,1,.36,1);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
 .detail-panel.open .detail-drawer{transform:translateX(0)}
 .detail-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e6e5e2}
 @media(min-width:640px){.detail-header{padding:1.5rem 2rem}}
@@ -762,7 +762,7 @@ img{display:block}
       </h2>
       <ul class="stats-grid">
         <li class="reveal-item" data-reveal data-delay="0" style="transform:translateY(20px)"><div class="stat-number"><span data-count="5">0</span></div><div class="stat-label">Hackathon awards</div></li>
-        <li class="reveal-item" data-reveal data-delay="90" style="transform:translateY(20px)"><div class="stat-number"><span data-count="8">0</span></div><div class="stat-label">Certifications</div></li>
+        <li class="reveal-item" data-reveal data-delay="90" style="transform:translateY(20px)"><div class="stat-number"><span data-count="5">0</span></div><div class="stat-label">Certifications</div></li>
         <li class="reveal-item" data-reveal data-delay="180" style="transform:translateY(20px)"><div class="stat-number">8.03</div><div class="stat-label">Final Year CGPA</div></li>
         <li class="reveal-item" data-reveal data-delay="270" style="transform:translateY(20px)"><div class="stat-number"><span data-count="2">0</span>+</div><div class="stat-label">Projects shipped</div></li>
       </ul>
@@ -827,7 +827,7 @@ img{display:block}
 </footer>
 
 <!-- NAV MENU -->
-<div class="nav-menu" id="navMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+<div class="nav-menu" data-lenis-prevent id="navMenu" role="dialog" aria-modal="true" aria-label="Navigation">
   <div class="nav-menu-top shell">
     <span class="nav-menu-brand"><svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>Mahesh M S K</span>
     <button class="nav-menu-close" onclick="closeNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4 4 20"/></svg>Close</button>
@@ -851,7 +851,7 @@ img{display:block}
 <!-- DETAIL PANEL -->
 <div class="detail-panel" id="detailPanel">
   <div class="detail-backdrop" onclick="closeDetail()"></div>
-  <div class="detail-drawer">
+  <div class="detail-drawer" data-lenis-prevent>
     <div class="detail-header">
       <button class="detail-back" onclick="closeDetail()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -867,7 +867,7 @@ img{display:block}
 
 <!-- CONTACT MODAL -->
 <div class="modal-backdrop" id="requestModal" role="dialog" aria-modal="true" onclick="closeModal()">
-  <div class="modal-panel" onclick="event.stopPropagation()">
+  <div class="modal-panel" data-lenis-prevent onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4 4 20"/></svg></button>
     <div id="modalFormState">
       <div class="modal-heading">
@@ -962,36 +962,21 @@ const CERTS = [
              'Implemented tool-calling mechanisms and external data retrieval with Model Context Protocol (MCP) and custom Python tools.',
              'Applied structured output enforcement using Pydantic schemas and token streaming for responsive conversational AI interfaces.',
              'Directly utilized these foundational agent patterns to build the ReAct agent loops in the <a href="https://github.com/Mahee0117/EventPlanner_Langchain" target="_blank" rel="noopener"><strong>Multi-Agent Event Planner</strong></a> project.'] },
-  { id:'c1', title:'Data Structures and Algorithms', issuer:'GeeksforGeeks × Boeing / NIT Trichy',
-    date:'March 2024', event:"Vortex '24 — National Level Technical Symposium",
-    imageSrc:'images/dsa-gfg-vortex24-cert.jpg',
-    imageAlt:"DSA certificate — GeeksforGeeks × Boeing, Vortex '24, NIT Tiruchirappalli",
-    note:"Completed the Data Structures & Algorithms workshop conducted by GeeksforGeeks as part of Vortex '24, the National Level Technical Symposium organised by the Computer Science & Engineering Association of NIT Tiruchirappalli, 8th–10th March 2024." },
-  { id:'c2', title:'Deep Learning with Quantum Computing', issuer:'Madras Institute of Technology, Anna University',
-    date:'March 2024', event:"SAMHITA '24 — National Level Technical Symposium",
-    imageSrc:'images/deeplearning-quantum-samhita24-cert.jpg',
-    imageAlt:"Deep Learning with Quantum Computing certificate — MIT Anna University, SAMHITA '24",
-    note:"Attended the workshop on Deep Learning with Quantum Computing (expert from Wells Fargo) as part of SAMHITA '24, a national level technical symposium organised by the Information Technology Association, Madras Institute of Technology, Anna University, Chennai, 16th–17th March 2024." },
-  { id:'c3', title:'Programming in Java – Elite Certification', issuer:'IIT Kharagpur / NPTEL–SWAYAM',
-    date:'Jan – Apr 2025', event:'NPTEL Online Course — 12 Weeks (Skill India)',
-    imageSrc:'images/java-elite-nptel-iitkharagpur-cert.png',
-    imageAlt:'NPTEL Elite — Programming in Java certificate, IIT Kharagpur SWAYAM, Jan–Apr 2025',
-    note:'Awarded Elite status by IIT Kharagpur via NPTEL–SWAYAM (funded by MoE, Govt. of India) for successfully completing the 12-week Programming in Java course with a consolidated score of 62% (Online Assignments: 24.35/25 · Proctored Exam: 37.5/75). Roll No: NPTEL25CS57S1251000342. Credits recommended: 3 or 4.' },
-  { id:'c4', title:'Internet of Things (IoT)', issuer:'SRM Institute of Science and Technology, Vadapalani Campus',
-    date:'Feb – Mar 2024', event:'SRM IST Course — Dept. of ECE',
-    imageSrc:'images/iot-srm-vadapalani-cert.png',
-    imageAlt:'IoT Course Completion Certificate — SRM IST Vadapalani Campus, Chennai',
-    note:'Successfully completed the course on Internet of Things (IoT) offered by SRM Institute of Science and Technology, Vadapalani Campus, Chennai (Dept. of Electronics & Communication Engineering). Course duration: 26th February – 1st March 2024.' },
-  { id:'c5', title:'Front End Technologies', issuer:'IBM × Tamil Nadu Skill Development Corporation',
-    date:'November 2025', event:'Naan Mudhalvan Scheme — Govt. of Tamil Nadu',
-    imageSrc:'images/frontend-ibm-naanmudhalvan-cert.png',
-    imageAlt:'Front End Technologies Certificate of Achievement — IBM × Naan Mudhalvan, Tamil Nadu Skill Development Corporation, Nov 2025',
-    note:'Certificate of Achievement for the successful completion of Front End Technologies, sponsored by the Naan Mudhalvan Program, Tamil Nadu Skill Development Corporation and conducted by IBM. Date of Issue: 17/11/2025. Reg No: 911123104029. Cert No: NMO2526EAU35846639849.' },
   { id:'c6', title:'Full Stack Development with Java', issuer:'Infosys Springboard × Tamil Nadu Skill Development Corporation',
     date:'August 2026', event:'Naan Mudhalvan Scheme — Govt. of Tamil Nadu',
     imageSrc:'images/fullstack-java-infosys-naanmudhalvan-cert.png',
     imageAlt:'Full Stack Development with Java Certificate of Achievement — Infosys Springboard × Naan Mudhalvan, Tamil Nadu Skill Development Corporation, Aug 2026',
     note:'Certificate of Achievement for the successful completion of Full Stack Development with Java, conducted by Infosys Springboard and sponsored by the Naan Mudhalvan Program, Tamil Nadu Skill Development Corporation. Date of Issue: 06/08/2026. Reg No: 911123104029. Cert No: NME2526EAU37436639849.' },
+  { id:'c5', title:'Front End Technologies', issuer:'IBM × Tamil Nadu Skill Development Corporation',
+    date:'November 2025', event:'Naan Mudhalvan Scheme — Govt. of Tamil Nadu',
+    imageSrc:'images/frontend-ibm-naanmudhalvan-cert.png',
+    imageAlt:'Front End Technologies Certificate of Achievement — IBM × Naan Mudhalvan, Tamil Nadu Skill Development Corporation, Nov 2025',
+    note:'Certificate of Achievement for the successful completion of Front End Technologies, sponsored by the Naan Mudhalvan Program, Tamil Nadu Skill Development Corporation and conducted by IBM. Date of Issue: 17/11/2025. Reg No: 911123104029. Cert No: NMO2526EAU35846639849.' },
+  { id:'c3', title:'Programming in Java – Elite Certification', issuer:'IIT Kharagpur / NPTEL–SWAYAM',
+    date:'Jan – Apr 2025', event:'NPTEL Online Course — 12 Weeks (Skill India)',
+    imageSrc:'images/java-elite-nptel-iitkharagpur-cert.png',
+    imageAlt:'NPTEL Elite — Programming in Java certificate, IIT Kharagpur SWAYAM, Jan–Apr 2025',
+    note:'Awarded Elite status by IIT Kharagpur via NPTEL–SWAYAM (funded by MoE, Govt. of India) for successfully completing the 12-week Programming in Java course with a consolidated score of 62% (Online Assignments: 24.35/25 · Proctored Exam: 37.5/75). Roll No: NPTEL25CS57S1251000342. Credits recommended: 3 or 4.' },
 ];
 
 /* ── LENIS ── */
@@ -1002,19 +987,15 @@ requestAnimationFrame(raf);
 
 function stopScroll(){
   lenis.stop();
-  const h=document.documentElement;
-  h.style.position='relative'; h.style.overflow='hidden'; h.style.height='100%';
+  document.body.style.overflow='hidden';
 }
 function startScroll(){
+  document.body.style.removeProperty('overflow');
   lenis.start();
-  const h=document.documentElement;
-  h.style.removeProperty('position'); h.style.removeProperty('overflow'); h.style.removeProperty('height');
 }
 window.scrollToId=function(id){
   const el=document.getElementById(id); if(!el)return;
-  stopScroll();
-  setTimeout(()=>window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset,behavior:'smooth'}),50);
-  setTimeout(()=>startScroll(),100);
+  lenis.scrollTo(el, { offset: -20, duration: 1.2 });
 };
 
 /* ── ADAPTIVE GRID ── */
@@ -1230,6 +1211,8 @@ function openDetail(item,isAward){
     <div class="detail-meta-row">${pills.join('')}</div>
     <div class="detail-divider"></div>${descHtml}`;
 
+  const drawer = detailPanel.querySelector('.detail-drawer');
+  if(drawer) drawer.scrollTop = 0;
   detailPanel.classList.add('open');
   stopScroll();
   document.addEventListener('keydown',detailEsc);
