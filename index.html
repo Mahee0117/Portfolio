@@ -54,7 +54,7 @@ img{display:block}
 .header-brand svg{width:1.25rem;height:1.25rem;color:#b15f2c}
 .header-nav{display:none}
 @media(min-width:1024px){.header-nav{display:flex}}
-.header-nav ul{display:flex;gap:2rem;font-size:.875rem;font-weight:500}
+.header-nav ul{display:flex;gap:clamp(1rem,1.8vw,1.75rem);font-size:.875rem;font-weight:500}
 .header-nav li button,.header-nav li a{transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .35s cubic-bezier(.2,.8,.2,1);opacity:.8;display:inline-flex;align-items:center;gap:.25rem}
 .header-nav li button:hover,.header-nav li a:hover{transform:translateY(-2px);opacity:1}
 .header-nav .caret{font-size:.75rem;opacity:.6}
@@ -242,6 +242,40 @@ img{display:block}
 .portfolio-card-bottom p{margin-top:.5rem;max-width:28rem;font-size:.875rem;color:rgba(255,255,255,.55)}
 .portfolio-tags{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.5rem}
 .tag-chip{display:inline-flex;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:9999px;padding:.5rem 1rem;font-size:.875rem}
+
+/* EXPERIENCE */
+.experience-section{background:#f9f8f7}
+.experience-inner{padding:5rem 1.25rem}
+@media(min-width:640px){.experience-inner{padding-inline:2rem}}
+@media(min-width:1024px){.experience-inner{padding-block:7rem}}
+.experience-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem}
+.experience-card{background:#fff;border:1px solid #e6e5e2;border-radius:1.5rem;padding:1.5rem;transition:border-color .35s,transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;position:relative;overflow:hidden}
+@media(min-width:640px){.experience-card{padding:2rem}}
+.experience-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(207,128,71,.04),transparent);opacity:0;transition:opacity .35s;pointer-events:none}
+.experience-card:hover{border-color:rgba(177,95,44,.35);transform:translateY(-4px);box-shadow:0 12px 40px rgba(177,95,44,.08)}
+.experience-card:hover::before{opacity:1}
+.experience-card-top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;border-bottom:1px solid #f1f0ee;padding-bottom:1.25rem}
+.experience-card-header-row{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem}
+.experience-card-role{font-size:1.25rem;font-weight:600;letter-spacing:-.01em;color:#111}
+@media(min-width:640px){.experience-card-role{font-size:1.5rem}}
+.experience-card-company{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.9375rem;color:rgba(17,17,17,.65);margin-top:.25rem}
+.experience-card-company strong{color:#b15f2c;font-weight:600}
+.experience-dot-sep{color:rgba(17,17,17,.25);font-size:.875rem}
+.experience-meta-pills{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.experience-date-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.8125rem;font-weight:500;border-radius:9999px;padding:.375rem .875rem;background:#f1f0ee;color:rgba(17,17,17,.65)}
+.experience-date-pill svg{width:.875rem;height:.875rem;opacity:.6}
+.experience-type-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.8125rem;font-weight:600;border-radius:9999px;padding:.375rem .875rem;background:rgba(207,128,71,.12);color:#97501f;border:1px solid rgba(207,128,71,.25)}
+.experience-bullets{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem}
+.experience-bullets li{display:flex;gap:.875rem;font-size:.9375rem;line-height:1.7;color:rgba(17,17,17,.75)}
+.experience-bullets li::before{content:"";width:.45rem;height:.45rem;border-radius:9999px;background:#cf8047;flex-shrink:0;margin-top:.6rem}
+.experience-bullets strong{color:#111;font-weight:600}
+.experience-card-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-top:1.25rem;border-top:1px solid #f1f0ee}
+.experience-tech-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.experience-chip{display:inline-flex;align-items:center;background:#f5f4f2;border:1px solid #e6e5e2;border-radius:9999px;padding:.25rem .75rem;font-size:.75rem;font-weight:500;color:rgba(17,17,17,.7)}
+.experience-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.8125rem;font-weight:600;color:#cf8047;transition:color .2s;text-decoration:none}
+.experience-link:hover{color:#b15f2c;text-decoration:underline}
+.experience-link svg{width:.875rem;height:.875rem;transition:transform .25s ease}
+.experience-card:hover .experience-link svg{transform:translate(2px,-2px)}
 
 /* AWARDS & CERTS grid */
 .cards-section{background:#fff}
@@ -481,6 +515,7 @@ img{display:block}
       <ul>
         <li><button aria-current="page" onclick="scrollToId('home')">Home</button></li>
         <li><button onclick="scrollToId('works')">Projects</button></li>
+        <li><button onclick="scrollToId('experience')">Experience</button></li>
         <li><button onclick="scrollToId('awards')">Awards <span class="caret">▾</span></button></li>
         <li><button onclick="scrollToId('certifications')">Certifications</button></li>
         <li><button onclick="scrollToId('services')">Skills</button></li>
@@ -718,6 +753,104 @@ img{display:block}
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="experience-inner shell">
+    <div class="reveal-item" data-reveal style="transform:translateY(10px)">
+      <span class="eyebrow eyebrow--dark"><span class="eyebrow-dot"></span>Work Experience</span>
+    </div>
+    <h2 class="section-h2-line" data-line-reveal data-delay="120">
+      <span class="line-wrap"><span class="line-inner">Internships &amp; Industry.</span></span>
+    </h2>
+    <p class="section-sub">Production systems, cloud monitoring infrastructure, and full-stack software development.</p>
+
+    <div class="experience-list">
+      <!-- Experience 1: White and Box Tech -->
+      <div class="experience-card reveal-item" data-reveal data-delay="0" style="transform:translateY(28px)">
+        <div class="experience-card-top">
+          <div>
+            <div class="experience-card-header-row">
+              <h3 class="experience-card-role">Cloud Computing Intern</h3>
+              <span class="experience-type-pill">Internship</span>
+            </div>
+            <div class="experience-card-company">
+              <strong>White and Box Tech Products And Services</strong>
+              <span class="experience-dot-sep">•</span>
+              <span>Bangalore, India</span>
+            </div>
+          </div>
+          <div class="experience-meta-pills">
+            <span class="experience-date-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              06/2026 – 07/2026
+            </span>
+          </div>
+        </div>
+        <ul class="experience-bullets">
+          <li>Built and configured a containerized monitoring infrastructure using <strong>Docker</strong> and <strong>Docker Compose</strong> for a MERN application deployed on <strong>Kubernetes</strong>.</li>
+          <li>Configured <strong>Prometheus</strong> as the central metrics collection system and defined scrape targets for Kubernetes exporters and application metrics.</li>
+          <li>Integrated Prometheus with monitoring components (<strong>Alertmanager</strong>, <strong>Blackbox Exporter</strong>, <strong>Grafana</strong>) and validated metric collection and target connectivity end to end.</li>
+        </ul>
+        <div class="experience-card-footer">
+          <div class="experience-tech-chips">
+            <span class="experience-chip">Docker</span>
+            <span class="experience-chip">Docker Compose</span>
+            <span class="experience-chip">Kubernetes</span>
+            <span class="experience-chip">Prometheus</span>
+            <span class="experience-chip">Grafana</span>
+            <span class="experience-chip">Alertmanager</span>
+            <span class="experience-chip">Blackbox Exporter</span>
+            <span class="experience-chip">Linux</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience 2: Shadow Minds Solutions -->
+      <div class="experience-card reveal-item" data-reveal data-delay="90" style="transform:translateY(28px)">
+        <div class="experience-card-top">
+          <div>
+            <div class="experience-card-header-row">
+              <h3 class="experience-card-role">Full-stack Developer Intern</h3>
+              <span class="experience-type-pill">Internship · On-site</span>
+            </div>
+            <div class="experience-card-company">
+              <strong>Shadow Minds Solutions™</strong>
+              <span class="experience-dot-sep">•</span>
+              <span>Bengaluru, Karnataka, India</span>
+            </div>
+          </div>
+          <div class="experience-meta-pills">
+            <span class="experience-date-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Jul 2025 · 1 mo
+            </span>
+          </div>
+        </div>
+        <ul class="experience-bullets">
+          <li>Joined a product startup as a full-stack intern and delivered across two distinct production workstreams in four weeks.</li>
+          <li>Built <strong>SimpleFoodPOS</strong> — a restaurant billing system from scratch using <strong>PHP</strong> and <strong>MySQL</strong>, with dine-in/takeaway order management, table assignment, and an admin dashboard. Independently handled schema design, backend logic, and a fully responsive frontend with <strong>Tailwind CSS</strong>.</li>
+          <li>Developed two web scraping pipelines in <strong>Node.js</strong> targeting Facebook Marketplace, using <strong>Puppeteer</strong> and <strong>Cheerio</strong> to extract and structure live listing data. Explored integrating scraped content with LLM-based tools for automated insight generation.</li>
+        </ul>
+        <div class="experience-card-footer">
+          <div class="experience-tech-chips">
+            <span class="experience-chip">PHP</span>
+            <span class="experience-chip">MySQL</span>
+            <span class="experience-chip">Node.js</span>
+            <span class="experience-chip">Puppeteer</span>
+            <span class="experience-chip">Cheerio</span>
+            <span class="experience-chip">Tailwind CSS</span>
+            <span class="experience-chip">XAMPP</span>
+          </div>
+          <a href="https://www.linkedin.com/in/msk-mahesh-98708829a/" target="_blank" rel="noopener" class="experience-link">
+            <span>LinkedIn Profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- AWARDS -->
 <section class="cards-section" id="awards">
   <div class="cards-section-inner shell">
@@ -808,6 +941,7 @@ img{display:block}
         <ul>
           <li><a href="#home" onclick="scrollToId('home');return false"><span>Home</span></a></li>
           <li><a href="#works" onclick="scrollToId('works');return false"><span>Projects</span></a></li>
+          <li><a href="#experience" onclick="scrollToId('experience');return false"><span>Experience</span></a></li>
           <li><a href="#awards" onclick="scrollToId('awards');return false"><span>Awards</span></a></li>
           <li><a href="#certifications" onclick="scrollToId('certifications');return false"><span>Certifications</span></a></li>
         </ul>
@@ -849,10 +983,11 @@ img{display:block}
     <ul class="nav-menu-list">
       <li><button class="nav-menu-item" onclick="navTo('home')"><span class="nav-idx">01</span><span class="nav-label">Home</span></button></li>
       <li><button class="nav-menu-item" onclick="navTo('works')"><span class="nav-idx">02</span><span class="nav-label">Projects</span></button></li>
-      <li><button class="nav-menu-item" onclick="navTo('awards')"><span class="nav-idx">03</span><span class="nav-label">Awards</span></button></li>
-      <li><button class="nav-menu-item" onclick="navTo('certifications')"><span class="nav-idx">04</span><span class="nav-label">Certifications</span></button></li>
-      <li><button class="nav-menu-item" onclick="navTo('services')"><span class="nav-idx">05</span><span class="nav-label">Skills</span></button></li>
-      <li><button class="nav-menu-item" onclick="navToContact()"><span class="nav-idx">06</span><span class="nav-label">Contact</span></button></li>
+      <li><button class="nav-menu-item" onclick="navTo('experience')"><span class="nav-idx">03</span><span class="nav-label">Experience</span></button></li>
+      <li><button class="nav-menu-item" onclick="navTo('awards')"><span class="nav-idx">04</span><span class="nav-label">Awards</span></button></li>
+      <li><button class="nav-menu-item" onclick="navTo('certifications')"><span class="nav-idx">05</span><span class="nav-label">Certifications</span></button></li>
+      <li><button class="nav-menu-item" onclick="navTo('services')"><span class="nav-idx">06</span><span class="nav-label">Skills</span></button></li>
+      <li><button class="nav-menu-item" onclick="navToContact()"><span class="nav-idx">07</span><span class="nav-label">Contact</span></button></li>
     </ul>
   </nav>
   <div class="nav-menu-bottom shell">
